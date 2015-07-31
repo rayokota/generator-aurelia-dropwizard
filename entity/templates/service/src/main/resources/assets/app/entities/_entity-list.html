@@ -1,0 +1,29 @@
+<template>
+  <div class="container">
+
+    <h3 class="left"><%= _.capitalize(pluralize(name)) %></h3>
+    <a href="#<%= pluralize(name) %>/new" class="waves-effect waves-light btn right header-button">New</a>
+
+    <table class="bordered hoverable table-responsive">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <% _.each(attrs, function (attr) { %>
+          <th><%= attr.attrName %></th><% }); %>
+        </tr>
+      </thead>
+      <tbody class="cursor-pointer">
+        <tr repeat.for="entity of entities" click.delegate="$parent.open(entity.id)">
+          <td>&#36;{entity.id}</td>
+          <% _.each(attrs, function (attr) { %>
+          <td>&#36;{entity.<%= attr.attrName %>}</td><% }); %>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="progress" show.bind="isLoading">
+      <div class="indeterminate"></div>
+    </div>
+
+  </div>
+</template>

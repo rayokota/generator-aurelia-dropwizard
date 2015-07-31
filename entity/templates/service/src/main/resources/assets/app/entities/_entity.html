@@ -1,0 +1,20 @@
+<template>
+  <div class="container">
+    <form submit.delegate="save()" novalidate>
+      <!-- header -->
+      <compose view="../entity-header.html"></compose>
+
+      <div class="row">
+        <div class="col s12 m10">
+          <div class="row">
+            <div class="input-field col s12 m4">
+              <% _.each(attrs, function (attr) { %> 
+              <input id="<%= attr.attrName %>" type="text" value.bind="entity.<%= attr.attrName %>"/>
+              <label for="<%= attr.attrName %>" materialize><%= _.capitalize(attr.attrName) %></label><% }); %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</template>
