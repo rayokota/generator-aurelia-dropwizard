@@ -6,6 +6,12 @@ A [Yeoman](http://yeoman.io) generator for [Aurelia](http://aurelia.io) and [Dro
 
 Install [Git](http://git-scm.com), [node.js](http://nodejs.org), [JDK 7](https://www.java.com), and [Maven 3](http://maven.apache.org/).
 
+Install Gulp and jspm:
+
+    npm install -g gulp
+
+    npm install -g jspm
+
 Install Yeoman:
 
     npm install -g yo
