@@ -33,7 +33,7 @@ export class Materialize {
     switch(this.value) {
       case 'datepicker':
         $(this.element).pickadate({
-          format: 'm/d/yyyy',
+          format: 'yyyy-mm-dd',
           selectMonths: true,
           selectYears: 15,
           onSet: () => fireEvent(this.element, 'change') // fire a change event so the binding system knows the element value was changed

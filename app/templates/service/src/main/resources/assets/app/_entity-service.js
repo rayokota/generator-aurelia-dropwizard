@@ -16,17 +16,6 @@ export class EntityService {
     return this.http.get('<%= baseName %>/' + entityType + '/' + id);
   }
 
-  createEmpty() {
-    return new Promise(
-      function(resolve, reject) {
-        var result = {
-          response: { 'id': '' }
-        };
-        resolve(result);
-      }
-    );
-  }
-
   create(entityType, entity) {
     return this.http.post('<%= baseName %>/' + entityType, entity);
   }

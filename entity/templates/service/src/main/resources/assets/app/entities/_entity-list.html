@@ -16,7 +16,7 @@
         <tr repeat.for="entity of entities" click.delegate="$parent.open(entity.id)">
           <td>&#36;{entity.id}</td>
           <% _.each(attrs, function (attr) { %>
-          <td>&#36;{entity.<%= attr.attrName %>}</td><% }); %>
+          <td>&#36;{entity.<%= attr.attrName %> <% if (attr.attrType === 'Date') { %> | dateFormat:'YYYY-MM-DD'<% } %>}</td><% }); %>
         </tr>
       </tbody>
     </table>

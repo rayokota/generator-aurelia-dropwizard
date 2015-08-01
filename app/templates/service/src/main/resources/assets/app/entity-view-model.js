@@ -15,7 +15,7 @@ export class EntityViewModel {
 
     // load or create the entity.
     if (info.id === 'new') {
-      promise = this.service.createEmpty();
+      promise = this.createEmpty();
     } else {
       promise = this.service.get(this.entityType, info.id);
     }

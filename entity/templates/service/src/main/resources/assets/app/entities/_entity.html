@@ -6,13 +6,17 @@
 
       <div class="row">
         <div class="col s12 m10">
+          <% _.each(attrs, function (attr) { %> 
           <div class="row">
             <div class="input-field col s12 m4">
-              <% _.each(attrs, function (attr) { %> 
+              <% if (attr.attrType === 'Date') { %>
+              <input id="<%= attr.attrName %>" type="text" materialize="datepicker" value.bind="entity.<%= attr.attrName %> | dateFormat:'YYYY-MM-DD'"/>
+              <% } else { %>
               <input id="<%= attr.attrName %>" type="text" value.bind="entity.<%= attr.attrName %>"/>
-              <label for="<%= attr.attrName %>" materialize><%= _.capitalize(attr.attrName) %></label><% }); %>
+              <% } %>
+              <label for="<%= attr.attrName %>" materialize><%= _.capitalize(attr.attrName) %></label>
             </div>
-          </div>
+          </div><% }); %>
         </div>
       </div>
     </form>
