@@ -9,10 +9,20 @@
           <% _.each(attrs, function (attr) { %> 
           <div class="row">
             <div class="input-field col s12 m4">
-              <% if (attr.attrType === 'Date') { %>
-              <input id="<%= attr.attrName %>" type="text" materialize="datepicker" value.bind="entity.<%= attr.attrName %> | dateFormat:'YYYY-MM-DD'"/>
-              <% } else { %>
+              <% if (attr.attrType === 'String') { %>
               <input id="<%= attr.attrName %>" type="text" value.bind="entity.<%= attr.attrName %>"/>
+              <% } else if (attr.attrType === 'Integer' || attr.attrType === 'Long') { %>
+              <input id="<%= attr.attrName %>" type="number" value.bind="entity.<%= attr.attrName %>"/>
+              <% } else if (attr.attrType === 'Float' || attr.attrType === 'Double') { %>
+              <input id="<%= attr.attrName %>" type="number" step="any" value.bind="entity.<%= attr.attrName %>"/>
+              <% } else if (attr.attrType === 'Boolean') { %>
+              <input id="<%= attr.attrName %>" type="checkbox" checked.bind="entity.<%= attr.attrName %>"/>
+              <% } else if (attr.attrType === 'Date') { %>
+              <input id="<%= attr.attrName %>" type="text" materialize="datepicker" value.bind="entity.<%= attr.attrName %> | dateFormat:'YYYY-MM-DD'"/>
+              <% } else if (attr.attrType === 'Enum') { %>
+              <% _.each(attr.enumValues, function (value) { %>
+              <input type="radio" name="<%= attr.attrName %>" value="<%= value %>" checked.bind="entity.<%= attr.attrName %>" id="<%= attr.attrName %>.<%= value %>"/>
+              <label for="<%= attr.attrName %>.<%= value %>"><%= value %></label><% }) %>
               <% } %>
               <label for="<%= attr.attrName %>" materialize><%= _.capitalize(attr.attrName) %></label>
             </div>
